@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Đăng Ký Tài Khoản</h2>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="name">Tên:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ name }}" required>
+                {% if errors.name %}
+                    <div class="text-danger">{{ errors.name }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Tên phải viết hoa chữ cái đầu.</small>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" value="{{ phone }}" required>
+                {% if errors.phone %}
+                    <div class="text-danger">{{ errors.phone }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Số điện thoại phải bắt đầu bằng số 0 và có 10 ký tự.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật Khẩu:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                {% if errors.password %}
+                    <div class="text-danger">{{ errors.password }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Mật khẩu phải có ít nhất 8 ký tự, có chữ cái đầu viết hoa và ít nhất một số.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật Khẩu:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                {% if errors.password %}
+                    <div class="text-danger">{{ errors.password }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Mật khẩu phải có ít nhất 8 ký tự, có chữ cái đầu viết hoa và ít nhất một số.</small>
+            </div>
+            <div class="form-group">
+                <label for="captcha">Mã Xác Thực:</label>
+                <input type="text" class="form-control" id="captcha" name="captcha" required>
+                {% if errors.captcha %}
+                    <div class="text-danger">{{ errors.captcha }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Mã xác thực: {{ captcha }}</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+        </form>
+    </div>
+</body>
+</html>

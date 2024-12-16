@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triển Lãm Cá Koi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FF0033;
+            position: relative;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        nav {
+            background-color: #FF0033;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            nav ul li a {
+                font-size: 18px;
+            }
+        }
+
+        nav ul li a:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .search-input {
+            display: none;
+        }
+
+        .search-btn {
+            margin-left: 10px;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .search-input {
+                display: block;
+                width: 500px;
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+
+            .search-btn {
+                display: none;
+            }
+        }
+
+        .search-input-mobile {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            width: calc(50% - 20px);
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background: #FFFFFF;
+            z-index: 10000;
+        }
+
+        .search-input-mobile.active {
+            display: block;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: Script;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-family: 'Script', sans-serif;
+            font-size: 60px;
+            font-weight: 100;
+            color: #000000;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #900000;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #FF0033;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #FF0033;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Triển Lãm Cá Koi</h1>
+        <div class="search-container">
+            <input type="text" class="search-input d-none d-md-block" placeholder="Tìm kiếm...">
+        </div>
+        <nav class="navbar navbar-expand-md navbar-light bg-black ml-auto">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <button class="search-btn d-md-none" id="mobile-search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('home') }}">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('exhibition') }}">Triển lãm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('contact') }}">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('login') }}">Đăng nhập</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Cá Koi" style="width:100%; height:auto;">
+        <section id="home">
+            <h2>Chào mừng bạn đến với triển lãm cá Koi</h2>
+            <h3>Giới Thiệu Về Triển Lãm Cá Koi</h3>
+            <p>Triển lãm cá Koi là sự kiện dành cho tất cả những người yêu thích cá Koi, từ người chơi cá cảnh, người mới bắt đầu, đến các nhà lai tạo và người bán cá chuyên nghiệp. Đây là cơ hội để cộng đồng cá Koi giao lưu, chia sẻ niềm đam mê, và trưng bày những chú cá đẹp nhất, quý hiếm nhất.</p>
+            <p>Sự kiện bao gồm các cuộc thi chấm điểm cá Koi, hội thảo chuyên sâu về chăm sóc, lai tạo, cùng các gian hàng giới thiệu sản phẩm, thiết bị hồ cá, và công nghệ nuôi cá. Triển lãm không chỉ là nơi giao thương, mà còn là không gian văn hóa độc đáo, nơi mọi người khám phá vẻ đẹp của loài cá được mệnh danh là "báu vật sống".</p>
+            <h3>Chào mừng đến với Triển lãm cá Koi !</h3>
+            <p>Đăng ký tham dự Triển lãm Koi ảo Kodama lần thứ 5 đã diễn ra! Đăng ký cá Koi của bạn ngay hôm nay!</p>
+            <p>Mục tiêu của triển lãm cá koi này là giáo dục và thúc đẩy niềm vui nuôi cá koi như một sở thích. Chúng tôi hy vọng chúng tôi đã khuyến khích sự quan tâm của bạn trong việc học cách nuôi cá koi Nhật Bản tuyệt vời và hy vọng chúng tôi đã giúp hỗ trợ những nỗ lực của bạn để trở thành bậc thầy về cá koi.</p>
+            <h3>Chi tiết tham gia:</h3>
+            <p>Phí tham gia là 50.000 đồng (VND) cho mỗi con cá koi mà bạn tham gia triển lãm cá koi. Mọi người ở Việt Nam đều có thể đăng ký tham gia triển lãm cá koi.</p>
+            <h4>Giải thưởng là gì?</h4>
+            <p>Thức ăn, Giấy chứng nhận cá koi và Huy chương lưu niệm là những giải thưởng hàng đầu. Sẽ có nhiều giải thưởng, phần thưởng khác từ các nhà tài trợ của chúng tôi.</p>
+            <h4>Nhà tài trợ triển lãm Koi:</h4>
+            <ul>
+                <li>Ban giám khảo chính thức: Ông Isa từ Isa Koi Farm, Ông Mano từ Dainichi Koi Farm</li>
+            </ul>
+            <h3>Lịch trình triển lãm cá Koi năm 2024:</h3>
+            <ul>
+                <li>1/12 - Mở đăng ký</li>
+                <li>15/12 - Đóng đăng ký</li>
+                <li>21/12 - Công bố giải thưởng</li>
+                <li>TBD - Lễ trao giải & Hội thảo Ban giám khảo</li>
+            </ul>
+            
+            <h3>Quy định và Quy tắc:</h3>
+            <ul>
+                <li>Phí vào cửa: 5 đô la/con cá Koi. Chúng tôi cũng hoan nghênh các khoản quyên góp.</li>
+                <li>Phí tải bài dự thi: 10 đô la/con cá Koi.</li>
+                <li>Đối tượng tham gia: Triển lãm dành cho tất cả những người yêu thích cá Koi, bao gồm cả người chơi cá và người bán cá Koi.</li>
+                <li>Giới hạn khu vực: Người tham gia phải đến từ Châu Mỹ (Bắc Mỹ, Trung Mỹ và Nam Mỹ) để có thể giành giải thưởng.</li>
+                <li>Tên đăng ký: Tất cả cá Koi phải được nhập bằng tên cá nhân, không phải tên doanh nghiệp.</li>
+                <li>Quyền sở hữu: Tất cả cá Koi tham gia phải thuộc quyền sở hữu của người tham gia tại thời điểm đăng ký và lễ trao giải.</li>
+                <li>Bản quyền nội dung: Mọi hình ảnh và thông tin gửi đến phải thuộc quyền sở hữu của người tham gia.</li>
+                <li>Hình ảnh và video: Không nên hiển thị bất cứ thứ gì ngoài hình ảnh Koi càng nhiều càng tốt.</li>
+                <li>Thông tin trung lập: Không được chứa thông tin của người chăn nuôi, người bán, hoặc bất kỳ chi tiết nào có thể ảnh hưởng đến việc chấm điểm.</li>
+                <li>Phê duyệt bài dự thi: Mỗi bài dự thi phải được ban tổ chức chấp thuận trước khi đăng ký.</li>
+                <li>Chỉnh sửa thông tin: Ban tổ chức có quyền xác nhận lại thông tin hoặc chỉnh sửa bài dự thi mà không cần liên hệ trước.</li>
+                <li>Hạn chế thay đổi: Sau khi xuất bản, không được phép thay thế hình ảnh và video.</li>
+                <li>Sử dụng thông tin: Bằng cách tham gia, người tham gia đồng ý rằng ban tổ chức có quyền sử dụng mọi hình ảnh hoặc thông tin thu thập được cho mục đích tiếp thị.</li>
+            </ul>
+            
+            <h3>Đưa Koi vào Triển lãm</h3>
+            <ul>
+                <li>Vui lòng xem lại và gửi thông tin cần thiết theo mẫu trực tuyến:</li>
+                <li>Tên cá Koi: Cá koi của bạn có tên không? Hãy đặt tên cho cá koi của bạn.</li>
+                <li>Mô tả về cá Koi: Viết mô tả về cá Koi này, kể câu chuyện, lịch sử của nó hoặc cách hoa văn thay đổi. Đây là bức tranh của bạn!</li>
+                <li>Kích thước ước tính và danh mục kích thước: Đây là hệ thống danh dự. Vui lòng cung cấp thông tin chính xác hoặc ước tính tốt nhất có thể.</li>
+                <li>Thể loại & Danh mục: Thông tin sẽ được ban tổ chức kiểm tra lại.</li>
+                <li>Ảnh Koi: Ưu tiên ảnh dọc và khuyến khích ảnh lớn hơn. Chấp nhận tệp JPG hoặc PNG. Kích thước tối thiểu: chiều rộng 320px x chiều cao 500px. Cho phép tối đa 3 ảnh.</li>
+                <li>Video Koi: (Tối đa 60 giây) tải lên YouTube/Vimeo (khuyến khích video ngang). Để đánh giá tốt nhất, hãy tải video lên YouTube và chèn liên kết.</li>
+                <li>Thời gian chụp hình ảnh và video: Phải được chụp trong vòng 5 tháng trở lại đây.</li>
+                <li>Thông tin liên hệ: Tên, Email, Số điện thoại để chúng tôi liên hệ về giải thưởng nếu bạn trúng thưởng.</li>
+            </ul>
+            
+            <h3>Thể loại Koi Show:</h3>    
+            <p>Các loại giống:</p>
+            <ul>
+                <li>Cá Kohaku</li>
+                <li>Taisho Sanke</li>
+                <li>Showa</li>
+                <li>Utsurimono</li>
+                <li>Asagi và Shusui</li>
+                <li>Koromo và Goshiki</li>
+                <li>Kawarimono (bao gồm Bekko, Muji)</li>
+                <li>Hikarimono (Hikarimoyo / HikariUtsuri / H ikari Muji)</li>
+                <li>Tancho</li>
+                <li>KinGinrin</li>
+                <li>Hirenaga / Bướm</li>
+            </ul>
+            <p>*Không có danh mục Doitsu. Chúng sẽ nằm trong từng danh mục đa dạng.</p>
+            <h3>Danh mục kích thước:</h3>
+            <ul>
+                <li>15 Bu - Dưới 15cm hoặc 6”</li>
+                <li>25 Bu - 15-25cm hoặc 6-10”</li>
+                <li>35 Bu - 25-35cm hoặc 10-12”</li>
+                <li>45 Bu - 35-45cm hoặc 12-18”</li>
+                <li>55 Bu - 45-55cm hoặc 18-22”</li>
+                <li>65 Bu - 55-65cm hoặc 22-26”</li>
+                <li>75 Bu - 65-75cm hoặc 26-30”</li>
+                <li>75 Bu + - 30” +</li>
+            </ul>
+            <a href="{{url_for('register')}}" class="button">Đăng Ký Ngay</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Triển Lãm Cá Koi. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        const mobileSearchBtn = document.getElementById('mobile-search-btn');
+        let searchInputMobile = document.createElement('input');
+        searchInputMobile.classList.add('search-input-mobile');
+        searchInputMobile.setAttribute('placeholder', 'Tìm kiếm...');
+        document.body.appendChild(searchInputMobile);
+
+        mobileSearchBtn.addEventListener('click', () => {
+            searchInputMobile.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triển Lãm Cá Koi - Liên Hệ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FF0033;
+            position: relative;
+            color: white;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        }
+
+        .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        }
+
+        .card-body {
+        padding: 15px;
+        background-color: #f8f9fa;
+        }
+
+        .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #FF0033;
+        }
+
+        p {
+        margin: 5px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #900000;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Triển Lãm Cá Koi</h1>
+        <nav class="navbar navbar-expand-md navbar-light bg-black ml-auto">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('home') }}">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('exhibition') }}">Triển lãm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('add_koi') }}">Thêm Cá Koi</a> <!-- Thêm đường dẫn này -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('contact') }}">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('login') }}">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <main>
+            <h2 class="text-center text-danger mb-4">Danh Sách Cá Koi Tham Gia Triển Lãm</h2>
+            <div class="container">
+                <div class="row">
+                    <!-- Cá Koi 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/koi1.jpg') }}" class="card-img-top" alt="Cá Koi 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Số Thứ Tự: 1</h5>
+                                <p><strong>Mã Số:</strong> K01</p>
+                                <p><strong>Tên:</strong> Kohaku</p>
+                                <p><strong>Giống:</strong> Kohaku</p>
+                                <p><strong>Tuổi:</strong> 2 năm</p>
+                                <p><strong>Mô Tả:</strong> Cá có hoa văn đỏ trắng đẹp mắt.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Cá Koi 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/koi2.jpg') }}" class="card-img-top" alt="Cá Koi 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Số Thứ Tự: 2</h5>
+                                <p><strong>Mã Số:</strong> K02</p>
+                                <p><strong>Tên:</strong> Showa</p>
+                                <p><strong>Giống:</strong> Showa</p>
+                                <p><strong>Tuổi:</strong> 3 năm</p>
+                                <p><strong>Mô Tả:</strong> Màu sắc đen trắng đỏ tương phản rõ nét.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Cá Koi 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='images/koi3.jpg') }}" class="card-img-top" alt="Cá Koi 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Số Thứ Tự: 3</h5>
+                                <p><strong>Mã Số:</strong> K03</p>
+                                <p><strong>Tên:</strong> Sanke</p>
+                                <p><strong>Giống:</strong> Taisho Sanke</p>
+                                <p><strong>Tuổi:</strong> 1 năm</p>
+                                <p><strong>Mô Tả:</strong> Hoa văn đỏ đen trên nền trắng nổi bật.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Triển Lãm Cá Koi. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </script>
+</body>
+</html>

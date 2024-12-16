@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Cá Koi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Thêm Cá Koi</h2>
+        <form action="/add-koi" method="POST">
+            <div class="form-group">
+                <label for="koi_name">Tên Cá Koi:</label>
+                <input type="text" class="form-control" id="koi_name" name="koi_name" value="{{ koi_name }}" required>
+                {% if errors.koi_name %}
+                    <div class="text-danger">{{ errors.koi_name }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="koi_type">Giống Cá Koi:</label>
+                <input type="text" class="form-control" id="koi_type" name="koi_type" value="{{ koi_type }}" required>
+                {% if errors.koi_type %}
+                    <div class="text-danger">{{ errors.koi_type }}</div>
+                {% endif %}
+            </div>
+            <div class ```html
+="form-group">
+                <label for="koi_age">Tuổi Cá Koi:</label>
+                <input type="number" class="form-control" id="koi_age" name="koi_age" value="{{ koi_age }}" required>
+                {% if errors.koi_age %}
+                    <div class="text-danger">{{ errors.koi_age }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="koi_description">Mô Tả:</label>
+                <textarea class="form-control" id="koi_description" name="koi_description" rows="3">{{ koi_description }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm Cá Koi</button>
+        </form>
+    </div>
+</body>
+</html>
